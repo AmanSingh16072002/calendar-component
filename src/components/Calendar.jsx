@@ -8,7 +8,7 @@ import CountdownBanner from "./CountdownBanner";
 const MONTH_DATA = [
   { image: "https://picsum.photos/id/winter/800/600",  quote: "Start fresh. New year, new focus." },
   { image: "https://picsum.photos/id/145/800/600",  quote: "Stay consistent. Small steps matter." },
-  { image: "https://picsum.photos/id/nature/800/600",  quote: "Push harder. You're closer than you think." },
+  { image: "https://picsum.photos/id/152/800/600", quote: "Push harder. You're closer than you think." },
   { image: "https://picsum.photos/id/110/800/600",  quote: "Focus on today. Make it count." },
   { image: "https://picsum.photos/id/116/800/600",  quote: "Discipline beats motivation." },
   { image: "https://picsum.photos/id/137/800/600",  quote: "Keep showing up. That's the key." },

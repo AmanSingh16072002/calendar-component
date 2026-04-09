@@ -1,23 +1,22 @@
+import { useState, useEffect } from "react";
 import { getDaysUntil } from "../utils/dateUtils";
 
 const CountdownBanner = ({ events }) => {
-  // Build list of all countdown events across ALL months
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   const countdownEvents = Object.entries(events)
     .filter(([, v]) => v?.isCountdown && v?.label)
     .map(([key, v]) => {
-      // key format: "YYYY-MM-DD"
-      // handle both single-date "YYYY-MM-DD" and range "YYYY-MM-DD_YYYY-MM-DD"
       const baseKey = key.split("_")[0];
       const [y, m, d] = baseKey.split("-").map(Number);
-
-      // month is 0-indexed in getDaysUntil
       const daysLeft = getDaysUntil(y, m - 1, d);
-
-      return {
-        label: v.label,
-        daysLeft,
-        key,
-      };
+      return { label: v.label, daysLeft, key };
     })
     .filter((e) => e.daysLeft >= 0)
     .sort((a, b) => a.daysLeft - b.daysLeft);
