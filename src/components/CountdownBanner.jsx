@@ -1,15 +1,6 @@
-import { useState, useEffect } from "react";
 import { getDaysUntil } from "../utils/dateUtils";
 
 const CountdownBanner = ({ events }) => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
   const countdownEvents = Object.entries(events)
     .filter(([, v]) => v?.isCountdown && v?.label)
     .map(([key, v]) => {
