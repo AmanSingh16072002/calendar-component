@@ -97,7 +97,7 @@ Open [http://localhost:5173](http://localhost:5173)
 
 ## 🌐 Live Demo
 
-[View on Vercel →](https://YOUR_VERCEL_URL.vercel.app)
+[View on Vercel →](calendar-component-hbe2war80-aman-singhs-projects-34fb5126.vercel.app)
 
 ---
 
