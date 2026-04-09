@@ -5,7 +5,7 @@ export const getFirstDayOfMonth = (year, month) =>
   new Date(year, month, 1).getDay();
 
 export const formatDateKey = (year, month, day) =>
-  `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  `${year}-${String(month+1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 
 export const getRangeKey = (year, month, start, end) =>
   end
