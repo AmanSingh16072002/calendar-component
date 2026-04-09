@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 const PRESET_LABELS = ["Exam", "Interview", "Deadline", "Holiday", "Birthday"];
 
-const EventModal = ({ day, month, year, onSave, onClose, existingLabel }) => {
+const EventModal = ({ day, month, year, onSave, onDelete, onClose, existingLabel }) => {
   const [label, setLabel] = useState(existingLabel || "");
   const [isCountdown, setIsCountdown] = useState(false);
   const inputRef = useRef(null);
@@ -11,7 +11,6 @@ const EventModal = ({ day, month, year, onSave, onClose, existingLabel }) => {
     inputRef.current?.focus();
   }, []);
 
-  // close on Escape
   useEffect(() => {
     const handler = (e) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", handler);
@@ -82,6 +81,12 @@ const EventModal = ({ day, month, year, onSave, onClose, existingLabel }) => {
         </div>
 
         <div className="modal-footer">
+          {/* Show delete button only if event already exists */}
+          {existingLabel && (
+            <button className="btn-danger" onClick={onDelete}>
+              🗑 Delete
+            </button>
+          )}
           <button className="btn-secondary" onClick={onClose}>
             Cancel
           </button>
@@ -90,7 +95,7 @@ const EventModal = ({ day, month, year, onSave, onClose, existingLabel }) => {
             onClick={handleSave}
             disabled={!label.trim()}
           >
-            Save Event
+            {existingLabel ? "Update" : "Save Event"}
           </button>
         </div>
       </div>

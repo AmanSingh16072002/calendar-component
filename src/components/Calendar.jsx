@@ -71,6 +71,16 @@ const Calendar = () => {
     setModal(null);
   }, [modal, year, month, setEvents]);
 
+  const handleDeleteEvent = useCallback(() => {
+  const key = formatDateKey(year, month, modal.day);
+  setEvents((prev) => {
+    const updated = { ...prev };
+    delete updated[key];
+    return updated;
+  });
+  setModal(null);
+}, [modal, year, month, setEvents]);
+
   const goToPrevMonth = () => setCurrentMonth(new Date(year, month - 1, 1));
   const goToNextMonth = () => setCurrentMonth(new Date(year, month + 1, 1));
 
@@ -208,6 +218,7 @@ const Calendar = () => {
           year={year}
           existingLabel={events[formatDateKey(year, month, modal.day)]?.label}
           onSave={handleSaveEvent}
+          onDelete={handleDeleteEvent}
           onClose={() => setModal(null)}
         />
       )}
